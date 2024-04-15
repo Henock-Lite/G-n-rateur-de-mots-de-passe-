@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>generateur de mots de passe</title>
+  </head>
+  <body>
+    <div class="parent-app">
+      <div class="app">
+        <input type="text" id="display-passwords"readonly value="generateur de mots de passe" />
+        <input
+          type="range"
+          value="8"
+          min="4"
+          max="24"
+          id="range"
+          oninput="document.getElementById('display-range').value=this.value"
+        />
+        <input type="text" id="display-range" value="8" readonly />
+        <input type="checkbox" id="Datauppercase"checked />
+        <label for="Datauppercase">A-Z</label>
+
+        <input type="checkbox" id="DataLowercase" />
+        <label for="DataLowercase">a-z</label>
+
+        <input type="checkbox" id="Datanumber" />
+        <label for="Datanumber">0-9</label>
+
+        <input type="checkbox" id="Datasymbole" />
+        <label for="Datasymbole">!-?</label>
+
+        <input type="button" value="Générer des mots de passe" id="action" />
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
