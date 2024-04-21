@@ -1,31 +1,38 @@
-const firstcheck = "AZERTYUIOPQSDFGHJKLMWXCVBN";
-const secondcheck = firstcheck.toLowerCase();
-const thirdcheck = "0123456789";
-const fourcheck = "&'!°-,;:?*\"$£~";
-const range = document.getElementById("range");
-const display = document.getElementById("display-passwords");
-const action = document.getElementById("action");
+const dataLowercase = "azertyuiopqsdfghjklmwxcvbn";
+const dataUppercase = dataLowercase.toUpperCase();
+const dataNumbers = "0123456789";
+const dataSymbols = "&'!-$,;-*%~\"?";
+const rangeValue = document.getElementById("password-length");
+const passwordOutput = document.getElementById("password-output");
 
-function Actionbtn() {
-  let password = "";
+function generatePassword() {
   let data = [];
-  if (Datauppercase.checked) data.push(...firstcheck);
-  if (DataLowercase.checked) data.push(...secondcheck);
-  if (Datanumber.checked) data.push(...thirdcheck);
-  if (Datasymbole.checked) data.push(...fourcheck);
+  let password = "";
+
+  if (lowercase.checked) data.push(...dataLowercase);
+  if (uppercase.checked) data.push(...dataUppercase);
+  if (numbers.checked) data.push(...dataNumbers);
+  if (symbols.checked) data.push(...dataSymbols);
+
   if (data.length === 0) {
-    alert("cocher une option avant de generé un mots de passe😉");
+    alert("Veuillez sélectionner des critères😉");
     return;
   }
-  for (let i = 0; i < range.value; i++) {
+
+  for (i = 0; i < rangeValue.value; i++) {
     password += data[Math.floor(Math.random() * data.length)];
   }
-  display.value = password;
-  display.select();
-  navigator.clipboard.writeText(display.value);
-  action.value="copié !"
+
+  passwordOutput.value = password;
+
+  passwordOutput.select();
+  navigator.clipboard.writeText(passwordOutput.value);
+
+  generateButton.textContent = "Copié !";
+
   setTimeout(() => {
-    action.value = "Générer des mots de passe";
-}, 1000);
+    generateButton.textContent = "Générer mot de passe";
+  }, 2000);
 }
-action.addEventListener("click", () => Actionbtn());
+
+generateButton.addEventListener("click", generatePassword);
